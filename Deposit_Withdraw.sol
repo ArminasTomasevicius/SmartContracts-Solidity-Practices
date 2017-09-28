@@ -4,7 +4,11 @@ pragma solidity ^0.4.0;
 
 contract CustodialContract{
     address client;
-    bool public _switch = false;
+    bool _switch = false;
+
+    event UpdateStatus(string _msg, uint _amount);
+
+
     function CustodialContract(){
         client = msg.sender;
     }
@@ -17,7 +21,7 @@ contract CustodialContract{
     }
     
     function depositFunds() payable{
-        
+        UpdateStatus('User has deposited money', msg.value);
     }
     
     function withdrawFunds(uint amount) ifClient{
